@@ -40,18 +40,18 @@ const Weather = ({ city }) => {
 
   return (
     <div className="weather-info">
-      <div className="weather-details">
-        <div className='box'>
+      <div className="weather-cards">
+        <div className="weather-card">
           <p><strong>Temperature:</strong> {weatherData.current.temp_c} °C</p>
         </div>
-        <div className='box'>
+        <div className="weather-card">
           <p><strong>Humidity:</strong> {weatherData.current.humidity} %</p>
         </div>
-        <div className='box'>
+        <div className="weather-card">
           <p><strong>Condition:</strong> {weatherData.current.condition.text}</p>
           <img src={weatherData.current.condition.icon} alt="weather icon" />
         </div>
-        <div className='box'>
+        <div className="weather-card">
           <p><strong>Wind Speed:</strong> {weatherData.current.wind_kph} kph</p>
         </div>
       </div>
