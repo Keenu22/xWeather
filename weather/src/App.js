@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import "./App.css";
 import Weather from './components/Weather';
 
 const App = () => {
@@ -8,11 +8,12 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setQuery(city); // mtlb jb search button click hua jbhi state set hui aur pass hui toi another component
+    setQuery(city);
   };
 
   return (
     <div className="app">
+      <h1>Weather Application</h1>
       <form onSubmit={handleSubmit}>
         <input 
           type="text" 
@@ -29,4 +30,3 @@ const App = () => {
 };
 
 export default App;
-

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+
 import "./Weather.css";
 
 const Weather = ({ city }) => {
@@ -20,16 +21,18 @@ const Weather = ({ city }) => {
           },
         });
         setWeatherData(response.data);
-        console.log(response.data);
       } catch (err) {
-        setError('City not found');
+        setError('City not found. Please check the name and try again.');
         alert("Failed to fetch weather data");
+        console.error(err); // Keep for debugging purposes
       } finally {
         setLoading(false);
       }
     };
 
-    fetchWeather();
+    if (city) {
+      fetchWeather();
+    }
   }, [city]);
 
   if (loading) return <p>Loading...</p>;
@@ -37,17 +40,20 @@ const Weather = ({ city }) => {
 
   return (
     <div className="weather-info">
-      <div className='box'>
-      <p><strong>Temperature:</strong> {weatherData.current.temp_c} °C</p>
-      </div>
-      <div className='box'>
-      <p><strong>Humidity:</strong> {weatherData.current.humidity} %</p>
-      </div>
-      <div className='box'>
-      <p><strong>Condition:</strong> {weatherData.current.condition.text}</p>
-      </div>
-      <div className='box'>
-      <p><strong>Wind Speed:</strong> {weatherData.current.wind_kph} kph</p>
+      <div className="weather-details">
+        <div className='box'>
+          <p><strong>Temperature:</strong> {weatherData.current.temp_c} °C</p>
+        </div>
+        <div className='box'>
+          <p><strong>Humidity:</strong> {weatherData.current.humidity} %</p>
+        </div>
+        <div className='box'>
+          <p><strong>Condition:</strong> {weatherData.current.condition.text}</p>
+          <img src={weatherData.current.condition.icon} alt="weather icon" />
+        </div>
+        <div className='box'>
+          <p><strong>Wind Speed:</strong> {weatherData.current.wind_kph} kph</p>
+        </div>
       </div>
     </div>
   );
