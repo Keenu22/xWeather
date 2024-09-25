@@ -23,6 +23,7 @@ const Weather = ({ city }) => {
         console.log(response.data);
       } catch (err) {
         setError('City not found');
+        alert("Failed to fetch weather data");
       } finally {
         setLoading(false);
       }
