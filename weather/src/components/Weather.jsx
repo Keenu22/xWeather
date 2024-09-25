@@ -35,7 +35,7 @@ const Weather = ({ city }) => {
     }
   }, [city]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Loading data...</p>;
   if (error) return <p>{error}</p>;
 
   return (
